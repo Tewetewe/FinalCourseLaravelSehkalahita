@@ -7,8 +7,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
-
-
 <link href="{{ asset('css/dashboard2.css') }}" rel="stylesheet">
 <link href="{{ asset('css/buku.css') }}" rel="stylesheet">
 <!------ Include the above in your HEAD tag ---------->
@@ -61,45 +59,28 @@
     </div>
   </nav>
 
-   <!-- Table-->
 
-<div class="container">
-    <div class="row col-md-6 col-md-offset-2 custyle">
-    <table class="table table-striped custab">
-    <thead> 
-    
-        <tr> 
-            <th>ID</th>
-            <th>Role</th>
-            <th class="text-center">Action</th>
-        </tr>
-      
-    </thead>
-    <tbody>
-      @foreach($role as $roleakun)
-            <tr>
-                  <td>{{$roleakun->id}}</td>
-                  <td>{{$roleakun->name}}</td>
-                  <td class="text-center">
-                    <a class='btn btn-info btn-xs' href="#">
-                      <span class="glyphicon glyphicon-edit"></span> Edit
-                    </a> 
-                    <a href="#" class="btn btn-danger btn-xs">
-                      <span class="glyphicon glyphicon-remove"></span> Delete
-                    </a>
-                  </td>               
-                      <button href='/admin/updaterolepage {{$roleakun->id}}' type='button' class='btn-showedit btn btn-primary' data-toggle='modal'>Edit</button>
-                      <button href='{{$roleakun->id}}' type='submit' class='btn-delete btn btn-primary'>Delete</button>
-                  </td>
-            </tr>
-        @endforeach
-      </tbody>
-    </table>
+<div class="container" id="registrasi">
+        
+        <div class="row justify-content-center align-items-center" style="height:100vh">
+            <div class="col-4">
+            <p class="text-center">Update Buku</p>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/admin/createbuku" method="POST">
+                        @csrf
+                            <div class="form-group">
+                                <input value = {{$buku->name}} type="text" class="form-control" name="name" placeholder="Nama">
+                            </div>                            
+                            <div class="form-group">
+                                <input value= {{$buku->jumlah_buku}} type="username" class="form-control" name="jumlah_buku" placeholder="Jumlah Buku">
+                            </div>
+                              <button type="button" class="btn btn-danger">Close</button> 
+                              <button type="submit" class="btn btn-primary">Submit</button>                    
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
     </div>
-    <div class="button-create">
-    <a href="/admin/updaterolepage" class="btn btn-warning btn-lg" role="button" aria-pressed="true">Update</a>
-      <a href="/admin/createrolepage" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create Role</a>
-    </div>
-</div>
-
-

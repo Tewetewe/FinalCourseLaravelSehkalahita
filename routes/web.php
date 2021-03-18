@@ -17,29 +17,56 @@ use App\Http\Controllers\DashboardController;
 */
 
 
-
-Route::get('/', function () {
-    return view('Dashboard');
-})->middleware('auth:2');
-
-Route::prefix('/admin')->group(function (){
-
-    Route::get('/a', function () {
-        return view('Dashboard2');
-    });
-
-    Route::get('/role', function(){
-        return view('Role');
-    });
+Route::prefix('/')->middleware('auth', 'role:user', 'role:admin')->group( function () {
     
-    Route::get('/buku', function(){
-        return view('Buku');
-    });
+
+
+
+});
+
+Route::prefix('/admin')->middleware('auth', 'role:admin')->group(function (){
+
+    //home
+    Route::get('/a', [DashboardController::class, 'getjumlahbuku']);
+
+
+    //role
+    Route::get('/role', [DashboardController::class, 'getrole']);
+
+    Route::get('/createrolepage', [DashboardController::class, 'createrolepage']);
+
+    Route::post('/createrole', [DashboardController::class, 'createrole']);
+
+    Route::get('/updaterolepage', [DashboardController::class, 'updaterolepage']);
+
+    Route::post('/updaterole', [DashboardController::class, 'updaterole']);
+    
+
+    //buku
+    Route::get('/buku', [DashboardController::class, 'getbuku']);
+
+    Route::post('/bukupage', [DashboardController::class, 'createbuku']);
+
+    Route::get('/createbukupage', [DashboardController::class, 'createbukupage']);
+
+    Route::post('/createbuku', [DashboardController::class, 'createbuku']);
+
+    Route::get('/updatebukupage', [DashboardController::class, 'updatebukupage']);
+
+    Route::post('/updatebuku', [DashboardController::class, 'updatebuku']);
+
+
+    //peminjaman
+    Route::get('/peminjaman', [DashboardController::class, 'getpeminjaman']);
+
+    Route::get('/createpeminjamanpage', [DashboardController::class, 'createpeminjamanpage']);
+
+    Route::post('/createpeminjaman', [DashboardController::class, 'createpeminjaman']);
+    
 });
 
 
-
-
+//Auth
 Route::get('/auth', [AuthController::class, 'loginpage']);
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -50,15 +77,6 @@ Route::post('/daftar', [RegisterController::class, 'register']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::get('/jumlahbuku', [DashboardController::class, 'getjumlahbuku']);
-
-Route::get('/role', function(){
-    return view('Role');
-});
-
-Route::get('/Buku', function(){
-    return view('Buku');
-});
 
 
 
