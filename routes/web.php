@@ -37,9 +37,9 @@ Route::prefix('/admin')->middleware('auth', 'role:admin')->group(function (){
 
     Route::post('/createrole', [DashboardController::class, 'createrole']);
 
-    Route::get('/updaterolepage', [DashboardController::class, 'updaterolepage']);
+    Route::get('/updaterolepage/{id}', [DashboardController::class, 'updaterolepage']);
 
-    Route::post('/updaterole', [DashboardController::class, 'updaterole']);
+    Route::put('/updaterole/{id}', [DashboardController::class, 'updaterole']);
     
 
     //buku

@@ -79,9 +79,9 @@ class DashboardController extends Controller
     }
 
     //update role page
-    public function updaterolepage(){
-
-        return view('UpdateRole');
+    public function updaterolepage($id){
+        $role = Role::find($id);
+        return view('UpdateRole', compact('role'));
     }
     //update role
     public function updaterole(Request $request, $id){

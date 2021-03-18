@@ -81,14 +81,13 @@
                   <td>{{$roleakun->id}}</td>
                   <td>{{$roleakun->name}}</td>
                   <td class="text-center">
-                    <a class='btn btn-info btn-xs' href="#">
+                    <a class='btn btn-info btn-xs' href="updaterolepage/{{$roleakun->id}}">
                       <span class="glyphicon glyphicon-edit"></span> Edit
                     </a> 
                     <a href="#" class="btn btn-danger btn-xs">
                       <span class="glyphicon glyphicon-remove"></span> Delete
                     </a>
                   </td>               
-                      <button href='/admin/updaterolepage {{$roleakun->id}}' type='button' class='btn-showedit btn btn-primary' data-toggle='modal'>Edit</button>
                       <button href='{{$roleakun->id}}' type='submit' class='btn-delete btn btn-primary'>Delete</button>
                   </td>
             </tr>
